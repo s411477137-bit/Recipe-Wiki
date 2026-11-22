@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Wiki｜料理新手入門</title>
+<style>
+:root{--cream:#f7f2e8;--paper:#fffdf8;--ink:#3e382f;--muted:#81796d;--sage:#87927a;--clay:#bd8061;--line:#e8dfd1;--gold:#d6b779}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:ui-serif,Georgia,"Noto Serif TC","Songti TC",serif}
+header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid var(--line);background:#f9f5ed}
+.brand{font-size:14px;letter-spacing:.14em;font-weight:700}.brand span{color:var(--sage)}
+main{min-height:calc(100vh - 130px);display:grid;place-items:center;padding:34px 18px}
+.deck{width:min(1040px,100%);min-height:min(690px,calc(100vh - 180px));background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 55px #58452a12;overflow:hidden;display:flex;flex-direction:column}
+.slide{display:none;padding:clamp(26px,6vw,72px);flex:1;animation:fade .35s ease}.slide.active{display:flex;flex-direction:column;justify-content:center}
+@keyframes fade{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--sage);letter-spacing:.2em;text-transform:uppercase;font:600 11px system-ui;margin-bottom:18px}
+h1{font-size:clamp(42px,7vw,76px);line-height:1.12;letter-spacing:-.045em;margin:0 0 20px}h2{font-size:clamp(30px,4.5vw,48px);line-height:1.2;margin:0 0 22px;letter-spacing:-.03em}h3{font-size:20px;margin:0 0 10px}
+p{font-size:clamp(16px,2vw,19px);line-height:1.8;color:#655d52;max-width:760px}.lead{font-size:clamp(19px,2.4vw,24px)}
+.kicker{font:600 12px system-ui;color:var(--clay);letter-spacing:.12em}
+.hero{background:linear-gradient(115deg,#fffdf8 0%,#f3eadb 100%);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:#d9c8a64d;right:-80px;bottom:-100px}
+.hero .hero-note{position:relative;z-index:1;margin-top:30px;border-top:1px solid var(--line);padding-top:18px;font:12px system-ui;letter-spacing:.14em;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.tile{background:#f8f4ec;border:1px solid var(--line);border-radius:14px;padding:20px}.tile p{font-size:15px;margin:5px 0 0;line-height:1.65}
+.num{font:600 12px system-ui;color:var(--clay);margin-bottom:10px}
+.pill{display:inline-block;border-radius:999px;padding:7px 12px;background:#edf0e8;color:#59634f;font:12px system-ui;margin:4px 5px 4px 0}
+.callout{border-left:3px solid var(--gold);padding:12px 18px;background:#faf6ed;margin:18px 0;color:#63594b;line-height:1.7}
+.steps{counter-reset:step;display:grid;gap:12px;margin-top:16px}.step{display:flex;gap:14px;align-items:flex-start}.step:before{counter-increment:step;content:counter(step,decimal-leading-zero);font:600 12px system-ui;color:var(--clay);background:#f2e8d8;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;flex:none}
+table{border-collapse:collapse;width:100%;margin:15px 0;font:14px system-ui}td,th{padding:12px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--sage);font-weight:700;background:#faf7f0}
+.quiz button,.nav button{border:1px solid var(--line);background:#fffdf8;color:var(--ink);padding:11px 16px;border-radius:999px;cursor:pointer;font:14px system-ui;transition:.2s}.quiz button:hover,.nav button:hover{background:#edf0e8;border-color:var(--sage)}
+.quiz-options{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.feedback{min-height:28px;color:var(--sage);font:14px system-ui}
+footer{height:66px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;gap:12px;font:12px system-ui;color:var(--muted)}
+.nav{display:flex;align-items:center;gap:9px}.nav button:disabled{opacity:.35;cursor:not-allowed}.progress{height:3px;background:#eee6da}.bar{height:3px;background:var(--sage);width:0;transition:width .25s}
+.small{font:12px system-ui;color:var(--muted);line-height:1.7}.source a{color:#66745b;text-decoration-thickness:1px;text-underline-offset:3px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.deck{min-height:650px}footer{padding:0 14px}.brand{font-size:12px}.nav button{padding:9px 12px}.slide{padding:28px 22px}table{font-size:12px}td,th{padding:8px}}
+</style>
+</head>
+<body>
+<header><div class="brand">RECIPE <span>WIKI</span></div><div class="small">COOKING FOR BEGINNERS · 教學簡報</div></header>
+<main><section class="deck" aria-label="Recipe Wiki 教學簡報">
+<div class="progress"><div class="bar" id="bar"></div></div>
+<article class="slide active hero">
+<div class="eyebrow">A gentle guide to cooking</div><div class="kicker">RECIPE WIKI / 01</div>
+<h1>料理新手<br>入門指南</h1>
+<p class="lead">從認識食材、理解火候，到完成一道安心又美味的料理。</p>
+<div><span class="pill">食材</span><span class="pill">調味</span><span class="pill">烹調</span><span class="pill">食品安全</span></div>
+<div class="hero-note">LEARN THE BASICS · BUILD YOUR CONFIDENCE</div>
+</article>
+<article class="slide"><div class="eyebrow">01 / START HERE</div><h2>料理，其實是有方法的</h2><p>料理不只是把食材加熱，而是理解材料特性、選擇合適的烹調方式，再用調味建立平衡。掌握幾個基本原則，就能更有信心地走進廚房。</p><div class="grid"><div class="tile"><div class="num">01 · UNDERSTAND</div><h3>認識食材</h3><p>知道食材的質地、含水量與風味。</p></div><div class="tile"><div class="num">02 · PREPARE</div><h3>事前準備</h3><p>讀懂食譜、備妥材料與工具。</p></div><div class="tile"><div class="num">03 · COOK</div><h3>掌握烹調</h3><p>選擇適合的熱源、火力與時間。</p></div><div class="tile"><div class="num">04 · CHECK</div><h3>確認安全</h3><p>留意熟度、清潔與保存方式。</p></div></div></article>
+<article class="slide"><div class="eyebrow">02 / INGREDIENTS</div><h2>先認識你的食材</h2><p>食材可以依料理功能與營養特性做不同分類。初學者可先從四大類開始理解。</p><div class="grid"><div class="tile"><h3>🥬 蔬菜與水果</h3><p>帶來顏色、纖維、清爽或甜味。葉菜、根莖與瓜果的含水量和熟成速度不同。</p></div><div class="tile"><h3>🥚 蛋白質食材</h3><p>豆腐、豆類、蛋、魚與肉類。不同食材需注意保存、處理及安全熟度。</p></div><div class="tile"><h3>🍚 全穀與澱粉</h3><p>米、麵、燕麥、馬鈴薯等，常作為料理主體，也會影響飽足感與口感。</p></div><div class="tile"><h3>🫒 油脂與調味</h3><p>油脂協助傳熱與帶出香氣；鹽、糖、酸味及香料調整整體風味。</p></div></div><div class="callout">選材小技巧：先想好料理想呈現的口感，再挑選食材；替換材料時也要考慮含水量與熟成時間。</div></article>
+<article class="slide"><div class="eyebrow">03 / SEASONING</div><h2>調味的秘密：追求平衡</h2><p>調味不是讓味道越重越好，而是讓食材原本的特色更清楚。建議少量開始、分階段調整。</p><div class="grid"><div class="tile"><h3>鹹 · Salt</h3><p>鹽、醬油、味噌。分次加入，避免過鹹。</p></div><div class="tile"><h3>酸 · Acid</h3><p>檸檬、醋、番茄。帶來明亮感，平衡油膩。</p></div><div class="tile"><h3>甜 · Sweet</h3><p>糖、蜂蜜及天然甜味食材，可柔化酸味或辛香。</p></div><div class="tile"><h3>香 · Aroma</h3><p>蒜、薑、胡椒、香草與乾燥香料，增加層次。</p></div></div><div class="callout">練習方式：同一道番茄料理，少量加入鹽、黑胡椒或檸檬汁，分別試味。一次只改一項，才容易理解差異。</div></article>
+<article class="slide"><div class="eyebrow">04 / COOKING METHODS</div><h2>三大烹調方式</h2><p>依主要傳熱方式，可概略分成乾熱、濕熱與混合烹調。選擇方式時，也要考慮食材大小、質地與想要的口感。</p><div class="grid"><div class="tile"><div class="num">DRY HEAT</div><h3>乾熱</h3><p>以熱空氣、鍋面或熱油傳熱。例：煎、炒、烤、烘焙。</p></div><div class="tile"><div class="num">MOIST HEAT</div><h3>濕熱</h3><p>利用熱水、湯汁或蒸氣。例：水煮、汆燙、蒸、低溫水煮。</p></div><div class="tile"><div class="num">COMBINATION</div><h3>混合烹調</h3><p>先煎上色，再加入液體慢煮。例：燉煮、紅燒。</p></div><div class="tile"><div class="num">REMEMBER</div><h3>沒有萬用火候</h3><p>鍋具、食材尺寸與火力都會改變結果，依食譜與狀態調整。</p></div></div></article>
+<article class="slide"><div class="eyebrow">05 / QUICK REFERENCE</div><h2>常見方法怎麼選？</h2><table><thead><tr><th>方法</th><th>特色</th><th>常見用途</th></tr></thead><tbody><tr><td>煎</td><td>鍋面直接加熱，形成表面香氣</td><td>蛋、魚排</td></tr><tr><td>炒</td><td>高溫、快速翻動、少量油</td><td>蔬菜、肉片</td></tr><tr><td>水煮</td><td>食材浸在沸騰液體中</td><td>麵、湯品</td></tr><tr><td>蒸</td><td>利用蒸氣加熱</td><td>魚、蔬菜</td></tr><tr><td>烤</td><td>烤箱熱空氣加熱</td><td>麵包、根莖蔬菜</td></tr><tr><td>燉</td><td>液體與較長時間加熱</td><td>豆類、肉塊</td></tr></tbody></table><p class="small">烹調方法定義參考 American Heart Association 與 UC Davis 的教學資料。</p></article>
+<article class="slide"><div class="eyebrow">06 / READ A RECIPE</div><h2>先讀食譜，再開火</h2><p>食譜是一張路線圖。先讀完全部步驟，確認份量、材料、工具和時間，再開始料理。</p><div class="steps"><div class="step"><div><h3>確認份量</h3><p>看清楚幾人份；份量增加時，調味和時間未必能直接倍增。</p></div></div><div class="step"><div><h3>檢查材料與工具</h3><p>確認食材、單位、鍋具、量匙與溫度計。</p></div></div><div class="step"><div><h3>預先備料</h3><p>洗切、分裝、量好調味料，讓烹調過程更流暢。</p></div></div><div class="step"><div><h3>看時間也看狀態</h3><p>爐具與食材尺寸不同，時間只是參考，需觀察料理狀態。</p></div></div></div></article>
+<article class="slide"><div class="eyebrow">07 / PUT IT TOGETHER</div><h2>實作示範：番茄義大利麵</h2><p>用簡單步驟串起今天學到的知識。以下是教學示意，實際份量與時間請依所選食譜及包裝指示調整。</p><div class="steps"><div class="step"><div><h3>備料</h3><p>義大利麵、番茄、蒜、橄欖油、鹽、黑胡椒與羅勒。</p></div></div><div class="step"><div><h3>煮麵</h3><p>依包裝指示在足量沸水中烹煮，保留少量煮麵水。</p></div></div><div class="step"><div><h3>製作醬汁</h3><p>以少量油加熱蒜末，加入番茄煮至軟化，避免蒜頭焦黑。</p></div></div><div class="step"><div><h3>拌合與調味</h3><p>加入麵條及少量煮麵水拌勻，試味後再調整鹽與胡椒。</p></div></div></div><div class="callout">實作重點：備料先完成；調味分次加入；生熟食器具分開使用。</div></article>
+<article class="slide"><div class="eyebrow">08 / FOOD SAFETY</div><h2>料理好吃，也要安心</h2><p>FDA 與 FoodSafety.gov 提醒家庭料理遵循四個基本步驟：</p><div class="grid"><div class="tile"><h3>01 · Clean 清潔</h3><p>洗手並清潔刀具、砧板、檯面與器具。</p></div><div class="tile"><h3>02 · Separate 分開</h3><p>生肉、海鮮與即食食物分開處理。</p></div><div class="tile"><h3>03 · Cook 煮熟</h3><p>使用食品溫度計確認安全中心溫度。</p></div><div class="tile"><h3>04 · Chill 冷藏</h3><p>易腐敗食物及剩食及時冷藏。</p></div></div><div class="callout">重要：肉類顏色與口感不能可靠判斷安全熟度，請使用食品溫度計。</div></article>
+<article class="slide"><div class="eyebrow">09 / TEMPERATURE GUIDE</div><h2>安全溫度參考</h2><p>以下為 FoodSafety.gov 公布的美國建議值。不同地區規範可能不同，請遵循所在地主管機關指引。</p><table><thead><tr><th>食物</th><th>中心溫度</th></tr></thead><tbody><tr><td>牛、豬、羊等整塊肉排／烤肉</td><td>63°C，靜置 3 分鐘</td></tr><tr><td>絞肉</td><td>71°C</td></tr><tr><td>家禽</td><td>74°C</td></tr><tr><td>魚</td><td>63°C</td></tr><tr><td>蛋料理</td><td>71°C</td></tr><tr><td>剩菜再加熱</td><td>74°C</td></tr></tbody></table><p class="small">資料來源：FoodSafety.gov, Cook to a Safe Minimum Internal Temperature。請依官方最新資料及食材種類核對。</p></article>
+<article class="slide"><div class="eyebrow">10 / STORAGE</div><h2>保存食物的好習慣</h2><div class="steps"><div class="step"><div><h3>冷藏與冷凍要分清楚</h3><p>冷藏減緩微生物生長；冷凍可延緩生長，但不代表殺死所有病原體。</p></div></div><div class="step"><div><h3>剩食盡快分裝冷藏</h3><p>使用淺而適當大小的容器，幫助食物較快降溫。</p></div></div><div class="step"><div><h3>標示日期</h3><p>寫下料理名稱與製作日期，依官方保存時間表決定食用或丟棄。</p></div></div><div class="step"><div><h3>安全解凍與再加熱</h3><p>避免室溫解凍；再加熱時充分加熱並依指引確認溫度。</p></div></div></div><div class="callout">FoodSafety.gov 的參考建議：冰箱 4°C 或以下，冷凍庫約 -18°C 或以下。</div></article>
+<article class="slide"><div class="eyebrow">11 / KNOWLEDGE CHECK</div><h2>小測驗：你學會了嗎？</h2><div class="quiz"><h3>哪一個方式最能確認肉類是否達到安全熟度？</h3><div class="quiz-options"><button onclick="answer(false)">只看外表顏色</button><button onclick="answer(true)">使用食品溫度計</button><button onclick="answer(false)">只依食譜時間</button></div><div class="feedback" id="feedback" aria-live="polite"></div></div><div class="callout">想一想：為什麼相同食譜在不同鍋具或食材尺寸下，完成時間可能不同？</div></article>
+<article class="slide"><div class="eyebrow">12 / TAKEAWAY</div><h2>從今天開始，安心下廚</h2><p class="lead">料理能力不是一次學會所有技巧，而是每次多理解一點食材、多掌握一點火候，也多建立一個安全習慣。</p><div class="grid"><div class="tile"><h3>認識材料</h3><p>理解食材特性與搭配。</p></div><div class="tile"><h3>掌握方法</h3><p>依料理目標選擇熱傳方式。</p></div><div class="tile"><h3>分段調味</h3><p>少量開始，試味後調整。</p></div><div class="tile"><h3>安全優先</h3><p>清潔、分開、煮熟、冷藏。</p></div></div><p class="small">Recipe Wiki · 美食料理知識百科</p></article>
+<article class="slide source"><div class="eyebrow">REFERENCES / WIKI SOURCES</div><h2>知識從哪裡來？</h2><p>本簡報依據 Recipe Wiki 的六篇知識頁整理，重要烹調與食品安全資訊參考下列公開機構資料。</p>
+<p><a href="https://www.heart.org/en/healthy-living/healthy-eating/cooking-skills/cooking/techniques/healthy-cooking-methods" target="_blank" rel="noopener">American Heart Association｜Healthy Cooking Methods</a></p>
+<p><a href="https://campusrecreation.ucdavis.edu/sites/g/files/dgvnsk6556/files/inline-files/Cooking%20Methods.pdf" target="_blank" rel="noopener">UC Davis｜Cooking Methods</a></p>
+<p><a href="https://www.fda.gov/food/buy-store-serve-safe-food/safe-food-handling" target="_blank" rel="noopener">FDA｜Safe Food Handling</a></p>
+<p><a href="https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures" target="_blank" rel="noopener">FoodSafety.gov｜Safe Minimum Internal Temperatures</a></p>
+<p><a href="https://www.cdc.gov/food-safety/prevention/index.html" target="_blank" rel="noopener">CDC｜Preventing Food Poisoning</a></p>
+<p><a href="https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety" target="_blank" rel="noopener">FoodSafety.gov｜4 Steps to Food Safety</a></p>
+<div class="callout">學習提醒：此簡報為一般料理教育內容，不能取代所在地食品安全主管機關的最新規範。</div></article>
+</section></main>
+<footer><div id="count">01 / 14</div><div class="nav"><button id="prev" aria-label="上一頁">← 上一頁</button><button id="next" aria-label="下一頁">下一頁 →</button></div><div>RECIPE WIKI · <span id="pct">7%</span></div></footer>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;
+const bar=document.getElementById('bar'),count=document.getElementById('count'),pct=document.getElementById('pct');
+function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));bar.style.width=((index+1)/slides.length*100)+'%';count.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');pct.textContent=Math.round((index+1)/slides.length*100)+'%';document.getElementById('prev').disabled=index===0;document.getElementById('next').disabled=index===slides.length-1}
+document.getElementById('prev').addEventListener('click',()=>show(index-1));document.getElementById('next').addEventListener('click',()=>show(index+1));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();show(index+1)}if(e.key==='ArrowLeft'){e.preventDefault();show(index-1)}});
+function answer(ok){document.getElementById('feedback').textContent=ok?'答對了！食品溫度計能協助確認中心溫度。':'再想想看：外觀與時間可能受食材大小、鍋具和火力影響。請選擇食品溫度計。';}
+show(0);
+</script>
+</body></html>
